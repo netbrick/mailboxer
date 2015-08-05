@@ -15,6 +15,8 @@ module Mailboxer
   @@search_engine = :solr
   mattr_accessor :email_method
   @@email_method = :mailboxer_email
+  mattr_accessor :email_notification_method
+  @@email_notification_method = :mailboxer_email
   mattr_accessor :name_method
   @@name_method = :name
   mattr_accessor :subject_max_length
