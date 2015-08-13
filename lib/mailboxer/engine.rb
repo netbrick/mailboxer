@@ -21,11 +21,10 @@ module EngineWithMigrations
     isolate_namespace EngineWithMigrations
 
     initializer :append_migrations do |app|
-      unless app.root.to_s.match root.to_s
-        config.paths["db/migrate"].expanded.each do |expanded_path|
-          app.config.paths["db/migrate"] << expanded_path
-        end
-      end
+      require 'rake'
+      Rails.application.load_tasks
+      Rake::Task['railties:install:migrations'].reenable
+      Rake::Task['mailboxer_engine:install:migrations'].invoke
     end
   end
 end
