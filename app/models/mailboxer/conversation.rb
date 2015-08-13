@@ -3,7 +3,7 @@ class Mailboxer::Conversation < ActiveRecord::Base
 
   attr_accessible :subject, :object_id, :object_type if Mailboxer.protected_attributes?
 
-  belongs_to :object
+  belongs_to :conversation_object, polymorphic: true
 
   has_many :opt_outs, :dependent => :destroy, :class_name => "Mailboxer::Conversation::OptOut"
   has_many :messages, :dependent => :destroy, :class_name => "Mailboxer::Message"
