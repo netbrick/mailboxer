@@ -1,5 +1,5 @@
 # -*- encoding: utf-8 -*-
-# stub: mailboxer 0.13.1 ruby lib
+# stub: mailboxer 0.13.3 ruby lib
 
 Gem::Specification.new do |s|
   s.name = "mailboxer"
