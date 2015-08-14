@@ -87,7 +87,7 @@ module Mailboxer
 
       #Basic reply method. USE NOT RECOMENDED.
       #Use reply_to_sender, reply_to_all and reply_to_conversation instead.
-      def reply(conversation, recipients, reply_body, subject=nil, sanitize_text=true, attachment=nil)
+      def reply(conversation, recipients, reply_body ,subject=nil, sanitize_text=true, attachment=nil)
         subject = subject || "#{conversation.subject}"
         response = Mailboxer::MessageBuilder.new({
           :sender       => self,
@@ -99,7 +99,7 @@ module Mailboxer
         }).build
 
         response.recipients.delete(self)
-        response.deliver true, sanitize_text
+        response.deliver true, sanitize_text, false
       end
 
       #Replies to the sender of the message in the conversation
